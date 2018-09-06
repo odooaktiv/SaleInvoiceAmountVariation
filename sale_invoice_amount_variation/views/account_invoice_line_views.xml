@@ -1,0 +1,15 @@
+<odoo>
+    <record id="invoice_form_inherit" model="ir.ui.view">
+        <field name="name">account.invoice.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page/field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
+                <field name="sale_price_unit" invisible="1"/>
+                <field name="diff" invisible="1"/>
+                <field name="sale_discount" invisible="1"/>
+                <field name="price_total" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
