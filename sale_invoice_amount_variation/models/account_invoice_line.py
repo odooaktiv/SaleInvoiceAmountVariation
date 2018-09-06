@@ -28,6 +28,6 @@ class AccountInvoiceLine(models.Model):
             if rec.price_unit > rec.sale_price_unit:
                 rec.diff = rec.price_unit - rec.sale_price_unit
             if rec.price_unit < rec.sale_price_unit:
-                rec.diff = rec.sale_price_unit - rec.price_unit
+                rec.diff = rec.price_unit - rec.sale_price_unit
             if rec.discount != rec.sale_discount:
                 rec.diff = rec.price_total - rec.price_subtotal
