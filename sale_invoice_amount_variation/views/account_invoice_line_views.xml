@@ -7,6 +7,7 @@
             <xpath expr="//page/field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
                 <field name="sale_price_unit" invisible="1"/>
                 <field name="diff" invisible="1"/>
+                <field name="sale_id"/>
                 <field name="sale_discount" invisible="1"/>
                 <field name="price_total" invisible="1"/>
             </xpath>

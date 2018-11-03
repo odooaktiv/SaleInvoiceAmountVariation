@@ -2,8 +2,12 @@
 	<template id="account_invoice_report_inherit_report"
 		inherit_id="account.report_invoice_document">
 		<xpath expr="//table[1]/thead/tr/th[4]" position="after">
-			<th class="text-right">Sale Price</th>
-			<th class="text-right">Difference</th>
+			<t t-foreach="o.invoice_line_ids" t-as="l">
+				<span t-if="l.sale_id">
+					<th class="text-right">Sale Price</th>
+					<th class="text-right">Difference</th>
+				</span>
+			</t>
 			<th class="text-right">User</th>
 		</xpath>
 		<xpath expr="//table[1]/tbody/tr/td[4]" position="replace">
@@ -13,14 +17,17 @@
 			</td>
 		</xpath>
 		<xpath expr="//table[1]/tbody/tr/td[4]" position="after">
-			<td class="text-right">
-				<span t-field="l.sale_price_unit"
-					t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
-			</td>
-			<td class="text-right">
-				<span t-field="l.diff"
-					t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
-			</td>
+			<t t-if="l.sale_id">
+				<td class="text-right">
+					<span t-field="l.sale_price_unit"
+						t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+				</td>
+
+				<td class="text-right">
+					<span t-field="l.diff"
+						t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+				</td>
+			</t>
 			<td class="text-right">
 				<span t-field="o.user_id.name" />
 			</td>

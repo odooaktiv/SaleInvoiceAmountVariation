@@ -12,12 +12,14 @@ class AccountInvoiceLine(models.Model):
     diff = fields.Float('Difference', compute="compute_sale_price", store=True)
     sale_discount = fields.Float('Sale Discount', compute="compute_sale_price", store=True)
     price_total = fields.Float('Sale Price Total', compute="compute_sale_price", store=True)
+    sale_id = fields.Many2one('sale.order', 'Sale Order', compute="compute_sale_price")
 
     @api.depends('price_unit', 'sale_discount', 'diff', 'sale_price_unit', 'discount')
     def compute_sale_price(self):
         for rec in self:
             sale_id = self.env['sale.order']\
                 .search([('name', '=', rec.origin)])
+            rec.sale_id = sale_id
             if sale_id:
                 for line in sale_id.order_line:
                     if line.product_id.id == rec.product_id.id:

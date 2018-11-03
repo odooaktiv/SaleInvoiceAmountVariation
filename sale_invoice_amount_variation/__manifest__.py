@@ -10,7 +10,7 @@
     'license': "AGPL-3",
     'category': 'web',
     'version': '10.0.1.0.0',
-    'depends': ['sale', 'account'],
+    'depends': ['sale', 'account', 'stock'],
     'data': [
         'views/account_invoice_line_views.xml',
         'views/account_invoice.xml',
