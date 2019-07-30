@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of AktivSoftware See LICENSE file for full copyright and licensing details.
 {
-    'name': "Sale Invoice Amount Variation",
+    'name': "Update Sale Invoice Amount",
     'summary': """
         Prints report which shows unit price changed, sale price, difference and the user who has done changes.
        """,
